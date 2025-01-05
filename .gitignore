@@ -4,7 +4,7 @@
 media/
 staticfiles/
 *.log
-cert.cert
+cert.crt
 cert.key
 
 *.pyc
