@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+{% block title %}People{% endblock %}
+{% block content %}
+  <h1>People</h1>
+  <div id="people-list">
+    {% for user in users %}
+      <div class="user">
+        <a href="{{ user.get_absolute_url }}">
+          {% if user.profile.photo %}
+            <img src="{% thumbnail user.profile.photo 180x180 %}" alt="{{ user.get_full_name }}'s profile picture">
+          {% else %}
+            <img src="https://img.freepik.com/free-vector/creative-nerd-logo-template_23-2149218770.jpg?t=st=1734094223~exp=1734097823~hmac=77c569ae31e36a6d0c732f207b6b9c363f04bba513e82c7acd17aabe18a9a003&w=740" alt="Default profile picture">
+          {% endif %}
+        </a>
+        <div class="info">
+          <a href="{{ user.get_absolute_url }}" class="title">
+            {{ user.get_full_name }}
+          </a>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}
+
+
