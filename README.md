@@ -2,6 +2,10 @@
 
 This project is a **social application** built with Django and JavaScript that allows users to share and interact with images they find on the internet. The project focuses on implementing advanced functionalities such as social authentication, user activity streams, and infinite scrolling, providing a platform for users to connect and share content seamlessly.
 
+![Screenshot Description](https://i.imgur.com/82g38v4.png)
+
+
+
 ## Features
 
 ### Authentication
@@ -34,46 +38,34 @@ This project is a **social application** built with Django and JavaScript that a
 
 ## Installation
 
-Follow these steps to set up the project locally:
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/SaatoruGojo/BookMark.git
-   cd social-image-sharing
-   ```
-
-2. Create and activate a virtual environment:
-   ```bash
-   python -m venv venv
-   source venv/bin/activate   # On Windows: venv\Scripts\activate
-   ```
-
-3. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. Set up the database:
-   ```bash
-   python manage.py migrate
-   ```
-
-5. Create a `.env` file for environment variables and add your Google OAuth credentials:
+ Create a `.env` file for environment variables and add your Google OAuth credentials:
    ```
    GOOGLE_CLIENT_ID=your_google_client_id
    GOOGLE_CLIENT_SECRET=your_google_client_secret
    SECRET_KEY=your_django_secret_key
    DEBUG=True
    ALLOWED_HOSTS=*
+   
+   REDIS_HOST=localhost
+   REDIS_PORT=6379
+   REDIS_DB=0
    ```
+### **Set Up Redis**
+To run the project, you need a Redis server. Use Docker to set it up:
 
-6. Run the development server:
-   ```bash
-   python manage.py runserver
-   ```
+#### **Pull the Redis Docker Image**
+Execute the following command to pull the Redis Docker image:
+```bash
+docker pull redis:7.2.4
+```
 
-7. Visit `https://127.0.0.1:8000/` in your browser.
+#### **Start the Redis Container**
+Run the following command to start the Redis server:
+```bash
+docker run -it --rm --name redis -p 6379:6379 redis:7.2.4
+```
 
+> **Note:** The Redis server must be running for the project to work. Without it, the website will show a "machine refused to connect" error.
 ## Usage
 
 1. Register or log in using your email or Google account.
